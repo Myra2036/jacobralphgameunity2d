@@ -128,13 +128,13 @@ public class PlayerController : MonoBehaviour
 
     void TakeDamage()
     {
-        playerHealth --;
+        playerHealth = playerHealth - 10;
 
         if (playerHealth <= 0)
         {
             isDead = true;
 
-            Debug.Log("Player is dead.");
+            print("Player is dead.");
         }
     }
 
