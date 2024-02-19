@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("Can't connect to PlayerStats.cs");
         }
+
+        PlayerHealth();
     }
 
 
@@ -44,10 +46,15 @@ public class PlayerController : MonoBehaviour
         //*******CALLING METHODS************
         // Call the CalculateLevel() method
         CalculateLevel();
-        // Call the PlayerHealth() method
-        PlayerHealth();
+
         // Call the PlayerMana() method
         PlayerMana();
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            TakeDamage();
+        }
 
 
         // ****************Debug, show current player level (myLevel) in console each frame
@@ -112,14 +119,22 @@ public class PlayerController : MonoBehaviour
 
         // TAKING DAMAGE
         //*********DEBUG, ON Q PRESS, APPLY DAMAGE**********
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            playerHealth--;
+            TakeDamage();
         }
+    }
 
-        if (playerHealth > 1)
+
+    void TakeDamage()
+    {
+        playerHealth --;
+
+        if (playerHealth <= 0)
         {
             isDead = true;
+
+            Debug.Log("Player is dead.");
         }
     }
 
