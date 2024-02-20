@@ -51,7 +51,7 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         // ***********CALLING THE DEBUGANDTEST METHOD ******************
-        //DebugAndTest();
+        DebugAndTest();
     }
 
 

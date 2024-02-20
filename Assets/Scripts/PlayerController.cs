@@ -18,12 +18,15 @@ public class PlayerController : MonoBehaviour
     // general vars
     public float speed = 4;
     public Rigidbody2D rb;
-    public bool canDash;
+    public bool canDash = true;
     public int playerHealth;
     public int playerMana;
     public int myLevel;
 
+
     private bool isDead;
+
+
 
 
     // Start is called before the first frame update
@@ -36,7 +39,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("Can't connect to PlayerStats.cs");
         }
 
-        PlayerHealth();
+        
     }
 
 
@@ -50,15 +53,23 @@ public class PlayerController : MonoBehaviour
         // Call the PlayerMana() method
         PlayerMana();
 
+        // Call the PlayerHealth() method
+        PlayerHealth();
 
+        // Dash on Left Shift input
+        PlayerDash();
+
+
+
+
+        //***********DEBUG*************
         if (Input.GetKeyDown(KeyCode.Q))
         {
             TakeDamage();
         }
 
-
         // ****************Debug, show current player level (myLevel) in console each frame
-        Debug.Log("Level: " + myLevel);
+        //Debug.Log("Level: " + myLevel);
     }
 
 
@@ -119,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
         // TAKING DAMAGE
         //*********DEBUG, ON Q PRESS, APPLY DAMAGE**********
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q))
         {
             TakeDamage();
         }
@@ -128,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
     void TakeDamage()
     {
-        playerHealth = playerHealth - 10;
+        playerHealth--;
 
         if (playerHealth <= 0)
         {
@@ -142,5 +153,14 @@ public class PlayerController : MonoBehaviour
     void PlayerMana()
     {
         playerMana = playerStats.GetIntellect() * 50;
+    }
+
+
+    void PlayerDash()
+    {
+        if (canDash == true && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            
+        }
     }
 }
