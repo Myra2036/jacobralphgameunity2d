@@ -14,14 +14,25 @@ public class PlayerController : MonoBehaviour
         return myLevel;
     }
 
+    public int PlayerHealth()
+    {
+        return playerHealth;
+    }
+
+    public int MaxHealth()
+    {
+        return maxHealth;
+    }
 
     // general vars
     public float speed = 4;
     public Rigidbody2D rb;
     public bool canDash = true;
-    public int playerHealth;
+    public int playerHealth = 100;
     public int playerMana;
     public int myLevel;
+    public int flaskAmount = 3;
+    public int maxHealth;
 
 
     private bool isDead;
@@ -38,8 +49,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("Can't connect to PlayerStats.cs");
         }
-
-        
     }
 
 
@@ -53,17 +62,34 @@ public class PlayerController : MonoBehaviour
         // Call the PlayerMana() method
         PlayerMana();
 
-        // Call the PlayerHealth() method
-        PlayerHealth();
-
         // Dash on Left Shift input
         PlayerDash();
 
+        // Declaring and updating maxHealth
+        maxHealth = playerStats.GetVitality() * 50;
 
+
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Flask();
+        }
 
 
         //***********DEBUG*************
         if (Input.GetKeyDown(KeyCode.Q))
+        {
+            TakeDamage();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            playerHealth = maxHealth + 50;
+        }
+
+        // TAKING DAMAGE
+        //*********DEBUG, ON Q PRESS, APPLY DAMAGE**********
+        if (Input.GetKey(KeyCode.Q))
         {
             TakeDamage();
         }
@@ -123,20 +149,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Player health = Vitatlity stat * 50
-    void PlayerHealth()
-    {
-        playerHealth = playerStats.GetVitality() * 50;
-
-        // TAKING DAMAGE
-        //*********DEBUG, ON Q PRESS, APPLY DAMAGE**********
-        if (Input.GetKey(KeyCode.Q))
-        {
-            TakeDamage();
-        }
-    }
-
-
     void TakeDamage()
     {
         playerHealth--;
@@ -161,6 +173,25 @@ public class PlayerController : MonoBehaviour
         if (canDash == true && Input.GetKeyDown(KeyCode.LeftShift))
         {
             
+        }
+    }
+
+    void Flask()
+    {
+        if (flaskAmount > 0)
+        {
+            playerHealth = playerHealth + 50;
+            flaskAmount--;
+
+            if (playerHealth > maxHealth)
+            {
+                playerHealth = maxHealth;
+            }
+        }
+
+        else
+        {
+            Debug.Log("No flasks available.");
         }
     }
 }
