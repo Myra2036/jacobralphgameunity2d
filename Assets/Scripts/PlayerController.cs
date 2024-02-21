@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     // Access outside scripts
     // Access PlayerStats.cs
     public PlayerStats playerStats;
+    
+    public PlayerInventory playerInventory;
 
     // Make these vars accessible to other scripts
     public int MyLevel()
@@ -24,15 +26,28 @@ public class PlayerController : MonoBehaviour
         return maxHealth;
     }
 
+    public int PlayerMana()
+    {
+        return playerMana;
+    }
+
+    public int MaxMana()
+    {
+        return maxMana;
+    }
+
+
     // general vars
     public float speed = 4;
     public Rigidbody2D rb;
     public bool canDash = true;
     public int playerHealth = 100;
-    public int playerMana;
     public int myLevel;
-    public int flaskAmount = 3;
     public int maxHealth;
+    public int playerMana = 100;
+    public int maxMana;
+    // souls
+    public int essenceCount;
 
 
     private bool isDead;
@@ -43,11 +58,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // connect to PlayerStats.cs
-        playerStats = FindObjectOfType<PlayerStats>();
         if (playerStats == null)
         {
-            Debug.LogError("Can't connect to PlayerStats.cs");
+            Debug.LogError("PlayerStats reference is not assigned in the editor!");
+        }
+
+        if (playerInventory == null)
+        {
+            Debug.LogError("PlayerInventory reference is not assigned in the editor!");
         }
     }
 
@@ -59,42 +77,25 @@ public class PlayerController : MonoBehaviour
         // Call the CalculateLevel() method
         CalculateLevel();
 
-        // Call the PlayerMana() method
-        PlayerMana();
-
         // Dash on Left Shift input
         PlayerDash();
 
         // Declaring and updating maxHealth
         maxHealth = playerStats.GetVitality() * 50;
 
+        // Declaring ans updating maxMana
+        maxMana = playerStats.GetIntellect() * 50;
 
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Flask();
-        }
 
 
         //***********DEBUG*************
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            TakeDamage();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            playerHealth = maxHealth + 50;
-        }
-
-        // TAKING DAMAGE
-        //*********DEBUG, ON Q PRESS, APPLY DAMAGE**********
+        //ON Q PRESS, APPLY DAMAGE
         if (Input.GetKey(KeyCode.Q))
         {
             TakeDamage();
         }
 
-        // ****************Debug, show current player level (myLevel) in console each frame
+        //show current player level (myLevel) in console each frame
         //Debug.Log("Level: " + myLevel);
     }
 
@@ -162,36 +163,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void PlayerMana()
-    {
-        playerMana = playerStats.GetIntellect() * 50;
-    }
-
 
     void PlayerDash()
     {
         if (canDash == true && Input.GetKeyDown(KeyCode.LeftShift))
         {
             
-        }
-    }
-
-    void Flask()
-    {
-        if (flaskAmount > 0)
-        {
-            playerHealth = playerHealth + 50;
-            flaskAmount--;
-
-            if (playerHealth > maxHealth)
-            {
-                playerHealth = maxHealth;
-            }
-        }
-
-        else
-        {
-            Debug.Log("No flasks available.");
         }
     }
 }

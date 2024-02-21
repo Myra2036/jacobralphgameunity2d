@@ -298,6 +298,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4722362985226880816, guid: 9c8ce31075004ba4db4c803daf4df4e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 118272961}
+    - targetCorrespondingSourceObject: {fileID: 4722362985226880816, guid: 9c8ce31075004ba4db4c803daf4df4e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 118272962}
   m_SourcePrefab: {fileID: 100100000, guid: 9c8ce31075004ba4db4c803daf4df4e0, type: 3}
 --- !u!1 &118272954 stripped
 GameObject:
@@ -349,14 +352,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 118272961}
+  playerInventory: {fileID: 118272962}
   speed: 4
   rb: {fileID: 118272955}
   canDash: 1
   playerHealth: 100
-  playerMana: 0
   myLevel: 0
-  flaskAmount: 3
   maxHealth: 0
+  playerMana: 100
+  maxMana: 0
+  essenceCount: 0
 --- !u!114 &118272961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +380,22 @@ MonoBehaviour:
   Dexterity: 2
   Intellect: 2
   mySkillPoints: 2
+--- !u!114 &118272962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118272954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a38abc79c3cc1734f82853b0b3fbf2ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 118272959}
+  solarFlaskCount: 3
+  lunarFlaskCount: 3
+  useReturnItem: 0
 --- !u!1 &353763460
 GameObject:
   m_ObjectHideFlags: 0
