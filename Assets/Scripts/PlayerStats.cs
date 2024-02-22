@@ -14,7 +14,7 @@ public class PlayerStats : MonoBehaviour
     public int Strength = 2;
     public int Dexterity = 2;
     public int Intellect = 2;
-    public int mySkillPoints = 2;
+    public int mySkillPoints; 
 
 
     // make vars accessible to other scripts
@@ -50,6 +50,12 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
+
+
+
         // ***********CALLING THE DEBUGANDTEST METHOD ******************
         DebugAndTest();
     }
@@ -65,8 +71,6 @@ public class PlayerStats : MonoBehaviour
             {
                 Vitality++;
                 mySkillPoints--;
-
-                playerController.playerHealth = playerController.maxHealth + 50;
             }
 
             // testing adding 1 to the stated stat on X press
@@ -99,7 +103,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
-            Debug.Log("Not enough skill points to level up.");
+            //Debug.Log("Not enough skill points to level up.");
         }
     }
 }

@@ -14,9 +14,12 @@ public class PlayerInventory : MonoBehaviour
     // mana flask
     public int lunarFlaskCount = 3;
     public int maxLunarFlaskCount;
+    
+    //souls
+    public int essenceCount;
+    
     // return to bonfire thing
     public bool useReturnItem;
-
 
     // Make these vars accessible to outside scripts
     public int SolarFlaskCount()
@@ -42,6 +45,11 @@ public class PlayerInventory : MonoBehaviour
     public bool UseReturnIten()
     {
         return useReturnItem;
+    }
+
+    public int EssenceCount()
+    {
+        return essenceCount;
     }
 
 

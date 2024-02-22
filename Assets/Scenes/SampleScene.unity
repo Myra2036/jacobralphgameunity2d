@@ -361,7 +361,7 @@ MonoBehaviour:
   playerInventory: {fileID: 118272962}
   speed: 4
   rb: {fileID: 118272955}
-  canDash: 1
+  canDash: 0
   playerHealth: 100
   myLevel: 0
   maxHealth: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   Strength: 2
   Dexterity: 2
   Intellect: 2
-  mySkillPoints: 2
+  mySkillPoints: 0
 --- !u!114 &118272962
 MonoBehaviour:
   m_ObjectHideFlags: 0

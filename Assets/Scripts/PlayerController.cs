@@ -45,9 +45,6 @@ public class PlayerController : MonoBehaviour
     public int maxHealth;
     public int playerMana = 100;
     public int maxMana;
-    // souls
-    public int essenceCount;
-
 
     private bool isDead;
 
