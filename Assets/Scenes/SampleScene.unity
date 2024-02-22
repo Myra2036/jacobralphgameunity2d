@@ -304,6 +304,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4722362985226880816, guid: 9c8ce31075004ba4db4c803daf4df4e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 118272965}
+    - targetCorrespondingSourceObject: {fileID: 4722362985226880816, guid: 9c8ce31075004ba4db4c803daf4df4e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 118272966}
   m_SourcePrefab: {fileID: 100100000, guid: 9c8ce31075004ba4db4c803daf4df4e0, type: 3}
 --- !u!1 &118272954 stripped
 GameObject:
@@ -434,6 +437,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
+--- !u!114 &118272966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118272954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee320caf0430ba24aa3bace1ecf0ef58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  interactRange: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,9 +731,9 @@ GameObject:
   - component: {fileID: 1772089089}
   - component: {fileID: 1772089088}
   - component: {fileID: 1772089092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bonfire
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -780,7 +799,7 @@ Transform:
   m_GameObject: {fileID: 1772089086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.05, y: 1.56, z: 0}
+  m_LocalPosition: {x: 4.5, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
