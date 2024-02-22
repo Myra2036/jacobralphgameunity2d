@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
 
     private bool isDead;
+    private bool isInteractKeyDown;
 
 
 
@@ -171,4 +172,6 @@ public class PlayerController : MonoBehaviour
             
         }
     }
+
+    void 
 }
