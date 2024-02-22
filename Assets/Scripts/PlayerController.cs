@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
     
     public PlayerInventory playerInventory;
 
-    public InteractionScript interactionScript;
-
     // Make these vars accessible to other scripts
     public int MyLevel()
     {
@@ -52,7 +50,6 @@ public class PlayerController : MonoBehaviour
 
 
     private bool isDead;
-    private bool isInteractKeyDown;
 
 
 
@@ -87,11 +84,6 @@ public class PlayerController : MonoBehaviour
 
         // Declaring ans updating maxMana
         maxMana = playerStats.GetIntellect() * 50;
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            InteractKey();
-        }
 
 
 
@@ -177,12 +169,5 @@ public class PlayerController : MonoBehaviour
         {
             
         }
-    }
-
-    // interactions
-    void InteractKey()
-    {
-        isInteractKeyDown = true;
-
     }
 }
