@@ -65,6 +65,8 @@ public class PlayerStats : MonoBehaviour
             {
                 Vitality++;
                 mySkillPoints--;
+
+                playerController.playerHealth = playerController.maxHealth + 50;
             }
 
             // testing adding 1 to the stated stat on X press

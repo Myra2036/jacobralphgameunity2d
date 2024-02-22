@@ -5,6 +5,9 @@ public class Interaction : MonoBehaviour
     public LayerMask interactableLayer; // Set this in the Unity editor to the layer where your interactable objects are placed
     public float interactRange = 1f; // Set this to the range at which the player can interact with the object
 
+    public PlayerInventory playerInventory;
+    public PlayerController playerController;
+
     void Update()
     {
         // Get the last movement input from the player
@@ -34,14 +37,34 @@ public class Interaction : MonoBehaviour
             if (hit.collider != null)
             {
                 // Check if the hit object has a specific tag to identify it
-                if (hit.collider.CompareTag("Object"))
+                if (hit.collider.CompareTag("Interactable"))
                 {
                     // Replace "YourInteractableTag" with the tag you assigned to your interactable objects
 
                     // Perform interaction (you can replace this with your actual interaction logic)
                     Debug.Log("Interacting with: " + hit.collider.gameObject.name);
+
+                    WhatIsIt(hit.collider.gameObject.name);
                 }
             }
+        }
+    }
+
+
+    void WhatIsIt(string objectName)
+    {
+        // interacting with glint (bonfire)
+        if (objectName == "glint")
+        {
+            playerController.playerHealth = playerController.maxHealth;
+
+            playerInventory.solarFlaskCount = playerInventory.maxSolarFlaskCount;
+
+        }
+
+        if (objectName == "testmaxflask")
+        {
+            playerInventory.maxSolarFlaskCount++;
         }
     }
 }

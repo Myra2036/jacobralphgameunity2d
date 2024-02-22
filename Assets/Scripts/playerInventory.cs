@@ -10,8 +10,10 @@ public class PlayerInventory : MonoBehaviour
     // claim vars
     // health flask
     public int solarFlaskCount = 3;
+    public int maxSolarFlaskCount;
     // mana flask
     public int lunarFlaskCount = 3;
+    public int maxLunarFlaskCount;
     // return to bonfire thing
     public bool useReturnItem;
 
@@ -22,9 +24,19 @@ public class PlayerInventory : MonoBehaviour
         return solarFlaskCount;
     }
 
+    public int MaxSolarFlask()
+    {
+        return maxSolarFlaskCount;
+    }
+
     public int LunarFlaskCount()
     {
         return lunarFlaskCount;
+    }
+
+    public int MaxLunarFlask()
+    {
+        return maxLunarFlaskCount;
     }
 
     public bool UseReturnIten()
@@ -71,6 +83,8 @@ public class PlayerInventory : MonoBehaviour
             Debug.Log("No available Lunar Flasks.");
         }
     }
+
+
 
 
 
