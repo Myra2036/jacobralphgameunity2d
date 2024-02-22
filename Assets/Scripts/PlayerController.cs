@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Access outside scripts
-    // Access PlayerStats.cs
     public PlayerStats playerStats;
     
     public PlayerInventory playerInventory;
+
+    public InteractionScript interactionScript;
 
     // Make these vars accessible to other scripts
     public int MyLevel()
@@ -87,6 +88,11 @@ public class PlayerController : MonoBehaviour
         // Declaring ans updating maxMana
         maxMana = playerStats.GetIntellect() * 50;
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            InteractKey();
+        }
+
 
 
         //***********DEBUG*************
@@ -134,7 +140,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    // add the 4 stats and adjust the player level accordingly
     void CalculateLevel()
     {
         if (playerStats != null)
@@ -157,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            isDead = true;
+            //isDead = true;
 
             print("Player is dead.");
         }
@@ -173,5 +179,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void 
+    // interactions
+    void InteractKey()
+    {
+        isInteractKeyDown = true;
+
+    }
 }
