@@ -35,19 +35,32 @@ public class PlayerController : MonoBehaviour
         return maxMana;
     }
 
+    public bool CanDash()
+    {
+        return canDash;
+    }
+
 
     // general vars
-    public float speed = 4;
+    // base info
+    public int speed = 4;
     public Rigidbody2D rb;
-    public bool canDash = true;
     public int playerHealth = 100;
+
+    // base stats
     public int myLevel;
     public int maxHealth;
     public int playerMana = 100;
     public int maxMana;
+    
+    // dashing
+    public bool canDash = true;
+    public int dashMult = 2;
+    public float dashCooldown = 3f;
+    public bool isDashing = false;
 
+    // on death
     private bool isDead;
-
 
 
 
@@ -81,8 +94,6 @@ public class PlayerController : MonoBehaviour
 
         // Declaring ans updating maxMana
         maxMana = playerStats.GetIntellect() * 50;
-
-
 
         //***********DEBUG*************
         //ON Q PRESS, APPLY DAMAGE
@@ -159,12 +170,55 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    // call the dash coroutine
     void PlayerDash()
-    {
-        if (canDash == true && Input.GetKeyDown(KeyCode.LeftShift))
+    {   
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            if (canDash == true)
+            {
+                StartCoroutine(DashCoroutine());
+            }
+        }
+    }
+
+    //  dashing
+    IEnumerator DashCoroutine()
+    {
+        isDashing = true;
+        speed = 12;
+        IFrames();
+
+        yield return new WaitForSeconds(0.3f);
+
+        speed = 4;
+        isDashing = false;
+        IFrames();
+
+        StartCoroutine(DashCooldownCoruotine());
+    }
+
+    // dash cooldown
+    IEnumerator DashCooldownCoruotine()
+    {
+        canDash = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+
+        canDash = true;
+    }
+
+    // IFrames for the player when dashing
+    void IFrames()
+    {
+        if (isDashing == true)
+        {
+
+        }
+
+        else
+        {
+
         }
     }
 }
