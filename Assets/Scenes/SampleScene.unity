@@ -371,7 +371,7 @@ MonoBehaviour:
   maxMana: 0
   canDash: 1
   dashMult: 2
-  dashCooldown: 2
+  dashCooldown: 0.75
   isDashing: 0
 --- !u!114 &118272961
 MonoBehaviour:
