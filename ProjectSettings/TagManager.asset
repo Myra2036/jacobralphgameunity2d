@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Object
   - Interactable
+  - Collider
   layers:
   - Default
   - TransparentFX
